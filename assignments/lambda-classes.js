@@ -51,6 +51,22 @@ class Person {
 //   * `demo` receives a `subject` string as an argument and logs out the phrase 'Today we are learning about {subject}' where subject is the param passed in.
 //   * `grade` receives a `student` object and a `subject` string as arguments and logs out '{student.name} receives a perfect score on {subject}'
 
+class Instructor extends Person {
+    constructor(attr) {
+        super(attr);
+        this.specialty = attr.specialty;
+        this.favLanguage = attr.language;
+        this.catchPhrase = attr.catchPhrase;
+    }
+
+    demo(subject) {
+        console.log(`Today we are learning about ${subject}`);
+    }
+    grade(studentObj, subject) {
+        console.log(`${studentObj.name} receives a perfect score on ${subject}`);
+    }
+}
+
 // #### Student
 
 // * Now we need some students!
