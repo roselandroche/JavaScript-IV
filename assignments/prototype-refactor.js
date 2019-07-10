@@ -61,16 +61,18 @@ class GameObject {
     * should inherit destroy() from GameObject through CharacterStats
     * should inherit takeDamage() from CharacterStats
   */
-  function Humanoid(humAttr) {
-    CharacterStats.call(this, humAttr);
-    this.team = humAttr.team;
-    this.weapons = humAttr.weapons;
-    this.language = humAttr.language;
-    this.greet = function() {
+  class Humanoid extends CharacterStats {
+    constructor(humAttr) {
+        super(humAttr);
+        this.team = humAttr.team;
+        this.weapons = humAttr.weapons;
+        this.language = humAttr.language;
+    }
+    greet() {
       return `${this.name} offers a greeting in ${this.language}.`;
     }
   }
-  Humanoid.prototype = Object.create(CharacterStats.prototype);
+
   /*
     * Inheritance chain: GameObject -> CharacterStats -> Humanoid
     * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
@@ -145,9 +147,11 @@ class GameObject {
     // Stretch task: 
     // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
   
-  function Villain(villAttr) {
-    Humanoid.call(this, villAttr);
-    this.attack = function(hero) {
+  class Villain extends Humanoid {
+    constructor(villAttr) {
+        super(villAttr);
+    }
+    attack(hero) {
       console.log(`You will never defeat me!`);
       if(hero.healthPoints > 4) {
         console.log(hero.takeDamage(4));
@@ -157,11 +161,12 @@ class GameObject {
       };
     }
   }
-  Villain.prototype = Object.create(Humanoid.prototype);
   
-  function Hero(heroAttr) {
-    Humanoid.call(this, heroAttr);
-    this.attack = function(villain) {
+  class Hero extends Humanoid {
+    constructor(heroAttr) {
+        super(heroAttr);
+    }
+    attack(villain) {
       console.log(`Justice will prevail!`);
       if(villain.healthPoints > 4) {
         console.log(villain.takeDamage(4));
@@ -171,7 +176,6 @@ class GameObject {
       }
     }
   }
-  Hero.prototype = Object.create(Humanoid.prototype);
   
     // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
     // * Create two new objects, one a villain and one a hero and fight it out with methods!
