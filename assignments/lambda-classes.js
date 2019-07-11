@@ -83,6 +83,13 @@ class Student extends Person {
     sprintChallenge(subject) {
         console.log(`${this.name} has begun sprint challenge on ${subject}`);
     }
+    graduate() {
+        if(this.grade > 70) {
+            console.log(`Congrats ${this.name}! You are ready to graduate!`);
+        } else {
+            console.log(`Not quite yet, let's keep learning!`);
+        }
+    }
 }
 
 const rose = new Student({
@@ -97,6 +104,7 @@ const rose = new Student({
 
 rose.speak();
 rose.sprintChallenge('JavaScript');
+rose.graduate();
 
 
 kieran.affectGrade(rose, -5);
