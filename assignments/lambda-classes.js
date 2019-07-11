@@ -26,6 +26,13 @@ class Person {
     }
 }
 
+const nathan = new Person({
+    name: 'Nathan',
+    age: 28,
+    location: 'Amherst'
+});
+
+console.log(nathan.speak());
 
 class Instructor extends Person {
     constructor(attr) {
@@ -42,6 +49,18 @@ class Instructor extends Person {
         console.log(`${studentObj.name} receives a perfect score on ${subject}`);
     }
 }
+
+const kieran = new Instructor({
+    name: 'Kieran',
+    age: 26,
+    location: 'California',
+    specialty: 'Game Dev',
+    favLanguage: 'JavaScript',
+    catchPhrase: 'Yeah, I love my music'
+});
+
+kieran.demo('JavaScript');
+kieran.speak();
 
 class Student extends Person {
     constructor (attr) {
@@ -62,6 +81,18 @@ class Student extends Person {
     }
 }
 
+const rose = new Student({
+    name: 'Rose',
+    age: 29,
+    location: 'North Tonawanda',
+    previousBackground: 'Retail',
+    className: 'WEBPT8',
+    favSubjects: ['HTML', 'JavaScript'] 
+});
+
+rose.speak();
+rose.sprintChallenge('JavaScript');
+
 class ProjectManager extends Instructor {
     constructor(attr) {
         super(attr);
@@ -70,9 +101,24 @@ class ProjectManager extends Instructor {
     }
 
     standUp(channel) {
-        console.log(`${this.name} annouces to ${channel}, @channel standy times!`);
+        console.log(`${this.name} announces to ${channel}, @channel standy times!`);
     }
     debugsCode(studentObj, subject) {
         console.log(`${this.name} debugs ${studentObj.name}'s code on ${subject}`)
     }
 }
+
+const joe = new ProjectManager ({
+    name: 'Joe',
+    age: 28,
+    location: 'California',
+    specialty: 'React',
+    favLanguage: 'JavaScript',
+    catchPhrase: 'Git puns never get old',
+    gradClassName: 'Wildcats',
+    favInstructor: 'Bryan'
+});
+
+joe.speak();
+joe.demo('JavaScript');
+joe.standUp('lecture');
