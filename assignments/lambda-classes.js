@@ -48,6 +48,9 @@ class Instructor extends Person {
     grade(studentObj, subject) {
         console.log(`${studentObj.name} receives a perfect score on ${subject}`);
     }
+    affectGrade(student, num) {
+        console.log(`${student.name}'s grade changed by ${num}`);
+    }
 }
 
 const kieran = new Instructor({
@@ -68,6 +71,7 @@ class Student extends Person {
         this.previousBackground = attr.previousBackground;
         this.className = attr.className;
         this.favSubjects = attr.favSubjects;
+        this.grade = attr.grade;
     }
 
     listsSubjects() {
@@ -77,7 +81,7 @@ class Student extends Person {
         console.log(`${student.name} has submitted a PR for ${subject}`);
     }
     sprintChallenge(subject) {
-        console.log(`${student.name} has begun sprint challenge on ${subject}`);
+        console.log(`${this.name} has begun sprint challenge on ${subject}`);
     }
 }
 
@@ -87,11 +91,15 @@ const rose = new Student({
     location: 'North Tonawanda',
     previousBackground: 'Retail',
     className: 'WEBPT8',
-    favSubjects: ['HTML', 'JavaScript'] 
+    favSubjects: ['HTML', 'JavaScript'],
+    grade: 94 
 });
 
 rose.speak();
 rose.sprintChallenge('JavaScript');
+
+
+kieran.affectGrade(rose, -5);
 
 class ProjectManager extends Instructor {
     constructor(attr) {
